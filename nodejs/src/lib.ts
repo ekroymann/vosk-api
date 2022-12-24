@@ -16,7 +16,11 @@ if (os.platform() === 'win32') {
 } else if (os.platform() === 'darwin') {
   soname = path.join(__dirname, '../lib', 'osx-x86_64', 'libvosk.dylib')
 } else {
-  soname = path.join(__dirname, '../lib', 'linux-x86_64', 'libvosk.so')
+  if (os.arch() === 'arm64') {
+    soname = path.join(__dirname, '../lib', 'linux-aarch64', 'libvosk.so')
+  } else {
+    soname = path.join(__dirname, '../lib', 'linux-x86_64', 'libvosk.so')
+  }
 }
 
 export type VoskModel = typeof vosk_model_ptr
