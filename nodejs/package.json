@@ -25,7 +25,7 @@
   "scripts": {
     "build": "tsc -p .",
     "start": "nodemon --watch \"**/*.ts\" --ignore \"*.test.ts\" --ignore \"**/test/*\" --exec ts-node watch.ts",
-    "download:lib": "wget -c $(npm view vosk dist.tarball) -O - | tar -xz && mv package/lib . && rm -rf package",
+    "download:lib": "wget -c https://github.com/alphacep/vosk-api/releases/download/v0.3.45/vosk-linux-aarch64-0.3.45.zip -O vosk-linux-aarch64.zip && unzip vosk-linux-aarch64.zip && mkdir -p lib/linux-aarch64 && mv vosk-linux-aarch64-*/libvosk.so lib/linux-aarch64/",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "prepublishOnly": "yarn build"
   },
